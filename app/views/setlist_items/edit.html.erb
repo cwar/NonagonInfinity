@@ -1,0 +1,12 @@
+<% content_for :title, "Editing setlist item" %>
+
+<h1>Editing setlist item</h1>
+
+<%= render "form", setlist_item: @setlist_item %>
+
+<br>
+
+<div>
+  <%= link_to "Show this setlist item", @setlist_item %> |
+  <%= link_to "Back to setlist items", setlist_items_path %>
+</div>

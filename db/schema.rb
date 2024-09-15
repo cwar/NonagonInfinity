@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_032049) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_034149) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_032049) do
     t.index ["settype"], name: "index_set_types_on_settype", unique: true
   end
 
+  create_table "setlist_items", force: :cascade do |t|
+    t.bigint "setlist_id", null: false
+    t.bigint "song_id", null: false
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["setlist_id"], name: "index_setlist_items_on_setlist_id"
+    t.index ["song_id"], name: "index_setlist_items_on_song_id"
+  end
+
   create_table "setlists", force: :cascade do |t|
     t.integer "show_id", null: false
     t.integer "song_id", null: false
@@ -128,6 +138,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_032049) do
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "shows_attended"
+    t.text "favorite_songs"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stats_on_user_id"
+  end
+
   create_table "tours", force: :cascade do |t|
     t.string "tourname", limit: 50, null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
@@ -174,7 +193,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_032049) do
   add_foreign_key "albums", "artists"
   add_foreign_key "bandmembers", "artists"
   add_foreign_key "bandmembers", "people", column: "people_id"
+  add_foreign_key "setlist_items", "setlists"
+  add_foreign_key "setlist_items", "songs"
   add_foreign_key "setlists", "songs"
   add_foreign_key "shows", "artists"
   add_foreign_key "shows", "tours", on_delete: :nullify
+  add_foreign_key "stats", "users"
 end

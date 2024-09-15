@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :stats
+  resources :setlist_items
   devise_for :users
   resources :transitions
   resources :setlists
