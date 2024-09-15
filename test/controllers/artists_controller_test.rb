@@ -17,7 +17,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create artist" do
     assert_difference("Artist.count") do
-      post artists_url, params: { artist: { active_years: @artist.active_years, artist: @artist.artist, bio: @artist.bio, slug: @artist.slug } }
+      post artists_url, params: { artist: { active_years: @artist.active_years, artist: @artist.name, bio: @artist.bio, slug: @artist.slug } }
     end
 
     assert_redirected_to artist_url(Artist.last)
@@ -34,7 +34,7 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update artist" do
-    patch artist_url(@artist), params: { artist: { active_years: @artist.active_years, artist: @artist.artist, bio: @artist.bio, slug: @artist.slug } }
+    patch artist_url(@artist), params: { artist: { active_years: @artist.active_years, artist: @artist.name, bio: @artist.bio, slug: @artist.slug } }
     assert_redirected_to artist_url(@artist)
   end
 

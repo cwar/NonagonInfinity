@@ -15,7 +15,7 @@ class ArtistsTest < ApplicationSystemTestCase
     click_on "New artist"
 
     fill_in "Active years", with: @artist.active_years
-    fill_in "Artist", with: @artist.artist
+    fill_in "Artist", with: @artist.name
     fill_in "Bio", with: @artist.bio
     fill_in "Slug", with: @artist.slug
     click_on "Create Artist"
@@ -29,7 +29,7 @@ class ArtistsTest < ApplicationSystemTestCase
     click_on "Edit this artist", match: :first
 
     fill_in "Active years", with: @artist.active_years
-    fill_in "Artist", with: @artist.artist
+    fill_in "Artist", with: @artist.name
     fill_in "Bio", with: @artist.bio
     fill_in "Slug", with: @artist.slug
     click_on "Update Artist"
