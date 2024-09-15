@@ -1,0 +1,12 @@
+<% content_for :title, "Editing transition" %>
+
+<h1>Editing transition</h1>
+
+<%= render "form", transition: @transition %>
+
+<br>
+
+<div>
+  <%= link_to "Show this transition", @transition %> |
+  <%= link_to "Back to transitions", transitions_path %>
+</div>

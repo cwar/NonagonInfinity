@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transition: MyString
+  dropdown: MyString
+  default_transition: MyString
+  desc: MyString
+  updated_at: 2024-09-15 02:43:08
+
+two:
+  transition: MyString
+  dropdown: MyString
+  default_transition: MyString
+  desc: MyString
+  updated_at: 2024-09-15 02:43:08

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_005944) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_024308) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -133,6 +133,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_005944) do
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["tourname"], name: "index_tours_on_tourname", unique: true
+  end
+
+  create_table "transitions", force: :cascade do |t|
+    t.string "transition", limit: 3, null: false
+    t.string "dropdown", limit: 20, null: false
+    t.string "default_transition", limit: 20, null: false
+    t.string "desc", limit: 55, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
 
   create_table "venues", force: :cascade do |t|

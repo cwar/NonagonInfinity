@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :transitions
   resources :setlists
   resources :songs
   resources :venues

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @transition %>
+
+<div>
+  <%= link_to "Edit this transition", edit_transition_path(@transition) %> |
+  <%= link_to "Back to transitions", transitions_path %>
+
+  <%= button_to "Destroy this transition", @transition, method: :delete %>
+</div>
