@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Set types" %>
+
+<h1>Set types</h1>
+
+<div id="set_types">
+  <% @set_types.each do |set_type| %>
+    <%= render set_type %>
+    <p>
+      <%= link_to "Show this set type", set_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New set type", new_set_type_path %>

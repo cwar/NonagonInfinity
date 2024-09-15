@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @set_type %>
+
+<div>
+  <%= link_to "Edit this set type", edit_set_type_path(@set_type) %> |
+  <%= link_to "Back to set types", set_types_path %>
+
+  <%= button_to "Destroy this set type", @set_type, method: :delete %>
+</div>

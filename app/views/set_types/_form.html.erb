@@ -1,0 +1,22 @@
+<%= form_with(model: set_type) do |form| %>
+  <% if set_type.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(set_type.errors.count, "error") %> prohibited this set_type from being saved:</h2>
+
+      <ul>
+        <% set_type.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :settype, style: "display: block" %>
+    <%= form.text_field :settype %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

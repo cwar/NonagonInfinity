@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_004423) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_005019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_004423) do
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["slug"], name: "index_people_on_slug", unique: true
+  end
+
+  create_table "set_types", force: :cascade do |t|
+    t.string "settype", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["settype"], name: "index_set_types_on_settype", unique: true
   end
 
   add_foreign_key "albums", "artists"
