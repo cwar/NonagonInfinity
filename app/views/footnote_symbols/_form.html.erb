@@ -1,0 +1,32 @@
+<%= form_with(model: footnote_symbol) do |form| %>
+  <% if footnote_symbol.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(footnote_symbol.errors.count, "error") %> prohibited this footnote_symbol from being saved:</h2>
+
+      <ul>
+        <% footnote_symbol.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :footnote_number, style: "display: block" %>
+    <%= form.number_field :footnote_number %>
+  </div>
+
+  <div>
+    <%= form.label :symbol, style: "display: block" %>
+    <%= form.text_field :symbol %>
+  </div>
+
+  <div>
+    <%= form.label :sane_value, style: "display: block" %>
+    <%= form.text_field :sane_value %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

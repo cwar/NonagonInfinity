@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @footnote_symbol %>
+
+<div>
+  <%= link_to "Edit this footnote symbol", edit_footnote_symbol_path(@footnote_symbol) %> |
+  <%= link_to "Back to footnote symbols", footnote_symbols_path %>
+
+  <%= button_to "Destroy this footnote symbol", @footnote_symbol, method: :delete %>
+</div>

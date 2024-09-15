@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Footnote symbols" %>
+
+<h1>Footnote symbols</h1>
+
+<div id="footnote_symbols">
+  <% @footnote_symbols.each do |footnote_symbol| %>
+    <%= render footnote_symbol %>
+    <p>
+      <%= link_to "Show this footnote symbol", footnote_symbol %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New footnote symbol", new_footnote_symbol_path %>

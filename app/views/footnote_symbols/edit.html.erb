@@ -1,0 +1,12 @@
+<% content_for :title, "Editing footnote symbol" %>
+
+<h1>Editing footnote symbol</h1>
+
+<%= render "form", footnote_symbol: @footnote_symbol %>
+
+<br>
+
+<div>
+  <%= link_to "Show this footnote symbol", @footnote_symbol %> |
+  <%= link_to "Back to footnote symbols", footnote_symbols_path %>
+</div>

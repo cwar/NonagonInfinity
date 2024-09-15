@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :footnote_symbols
   resources :people
   resources :bandmembers
   resources :albums

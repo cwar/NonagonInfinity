@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_003856) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_004423) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_003856) do
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["artist_id"], name: "index_bandmembers_on_artist_id"
     t.index ["people_id"], name: "index_bandmembers_on_people_id"
+  end
+
+  create_table "footnote_symbols", force: :cascade do |t|
+    t.integer "footnote_number", null: false
+    t.string "symbol", limit: 3, null: false
+    t.string "sane_value", limit: 3
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["footnote_number", "symbol"], name: "index_footnote_symbols_on_footnote_number_and_symbol", unique: true
   end
 
   create_table "people", force: :cascade do |t|
