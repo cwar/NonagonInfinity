@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  artist: one
+  albumtitle: MyString
+  displayname: MyString
+  slug: MyString
+  releasedate: MyString
+  cover: MyString
+  album_notes: MyText
+  is_statsable: false
+  lastmod: 1
+  lastuser: 1
+
+two:
+  artist: two
+  albumtitle: MyString
+  displayname: MyString
+  slug: MyString
+  releasedate: MyString
+  cover: MyString
+  album_notes: MyText
+  is_statsable: false
+  lastmod: 1
+  lastuser: 1

@@ -1,0 +1,11 @@
+<% content_for :title, "New bandmember" %>
+
+<h1>New bandmember</h1>
+
+<%= render "form", bandmember: @bandmember %>
+
+<br>
+
+<div>
+  <%= link_to "Back to bandmembers", bandmembers_path %>
+</div>

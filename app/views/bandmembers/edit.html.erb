@@ -1,0 +1,12 @@
+<% content_for :title, "Editing bandmember" %>
+
+<h1>Editing bandmember</h1>
+
+<%= render "form", bandmember: @bandmember %>
+
+<br>
+
+<div>
+  <%= link_to "Show this bandmember", @bandmember %> |
+  <%= link_to "Back to bandmembers", bandmembers_path %>
+</div>
