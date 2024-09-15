@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  show_id: 1
+  song_id: 1
+  displayname: MyString
+  setnumber: MyText
+  position: 1
+  transition_id: 1
+  footnote: MyString
+  tracktime: MyString
+  isjam: 1
+  isreprise: 1
+  uniqueid: MyString
+  isjamchart: 1
+  jamchartnote: MyString
+
+two:
+  show_id: 1
+  song_id: 1
+  displayname: MyString
+  setnumber: MyText
+  position: 1
+  transition_id: 1
+  footnote: MyString
+  tracktime: MyString
+  isjam: 1
+  isreprise: 1
+  uniqueid: MyString
+  isjamchart: 1
+  jamchartnote: MyString

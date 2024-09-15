@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Setlists" %>
+
+<h1>Setlists</h1>
+
+<div id="setlists">
+  <% @setlists.each do |setlist| %>
+    <%= render setlist %>
+    <p>
+      <%= link_to "Show this setlist", setlist %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New setlist", new_setlist_path %>

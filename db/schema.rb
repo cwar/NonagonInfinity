@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_005608) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_005944) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,6 +75,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_005608) do
     t.index ["settype"], name: "index_set_types_on_settype", unique: true
   end
 
+  create_table "setlists", force: :cascade do |t|
+    t.integer "show_id", null: false
+    t.integer "song_id", null: false
+    t.string "displayname", null: false
+    t.text "setnumber", null: false
+    t.integer "position", null: false
+    t.integer "transition_id", null: false
+    t.string "footnote", null: false
+    t.string "tracktime", limit: 7
+    t.integer "isjam", null: false
+    t.integer "isreprise", null: false
+    t.string "uniqueid", limit: 8, null: false
+    t.integer "isjamchart", default: 0, null: false
+    t.string "jamchartnote", limit: 512
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shows", force: :cascade do |t|
     t.integer "venue_id", null: false
     t.integer "artist_id", null: false
@@ -135,6 +153,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_005608) do
   add_foreign_key "albums", "artists"
   add_foreign_key "bandmembers", "artists"
   add_foreign_key "bandmembers", "people", column: "people_id"
+  add_foreign_key "setlists", "songs"
   add_foreign_key "shows", "artists"
   add_foreign_key "shows", "tours", on_delete: :nullify
 end

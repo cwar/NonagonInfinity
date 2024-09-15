@@ -1,0 +1,82 @@
+<%= form_with(model: setlist) do |form| %>
+  <% if setlist.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(setlist.errors.count, "error") %> prohibited this setlist from being saved:</h2>
+
+      <ul>
+        <% setlist.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :show_id, style: "display: block" %>
+    <%= form.number_field :show_id %>
+  </div>
+
+  <div>
+    <%= form.label :song_id, style: "display: block" %>
+    <%= form.number_field :song_id %>
+  </div>
+
+  <div>
+    <%= form.label :displayname, style: "display: block" %>
+    <%= form.text_field :displayname %>
+  </div>
+
+  <div>
+    <%= form.label :setnumber, style: "display: block" %>
+    <%= form.text_area :setnumber %>
+  </div>
+
+  <div>
+    <%= form.label :position, style: "display: block" %>
+    <%= form.number_field :position %>
+  </div>
+
+  <div>
+    <%= form.label :transition_id, style: "display: block" %>
+    <%= form.number_field :transition_id %>
+  </div>
+
+  <div>
+    <%= form.label :footnote, style: "display: block" %>
+    <%= form.text_field :footnote %>
+  </div>
+
+  <div>
+    <%= form.label :tracktime, style: "display: block" %>
+    <%= form.text_field :tracktime %>
+  </div>
+
+  <div>
+    <%= form.label :isjam, style: "display: block" %>
+    <%= form.number_field :isjam %>
+  </div>
+
+  <div>
+    <%= form.label :isreprise, style: "display: block" %>
+    <%= form.number_field :isreprise %>
+  </div>
+
+  <div>
+    <%= form.label :uniqueid, style: "display: block" %>
+    <%= form.text_field :uniqueid %>
+  </div>
+
+  <div>
+    <%= form.label :isjamchart, style: "display: block" %>
+    <%= form.number_field :isjamchart %>
+  </div>
+
+  <div>
+    <%= form.label :jamchartnote, style: "display: block" %>
+    <%= form.text_field :jamchartnote %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

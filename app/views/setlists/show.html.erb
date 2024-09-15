@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @setlist %>
+
+<div>
+  <%= link_to "Edit this setlist", edit_setlist_path(@setlist) %> |
+  <%= link_to "Back to setlists", setlists_path %>
+
+  <%= button_to "Destroy this setlist", @setlist, method: :delete %>
+</div>

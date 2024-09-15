@@ -1,0 +1,11 @@
+<% content_for :title, "New setlist" %>
+
+<h1>New setlist</h1>
+
+<%= render "form", setlist: @setlist %>
+
+<br>
+
+<div>
+  <%= link_to "Back to setlists", setlists_path %>
+</div>
