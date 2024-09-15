@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  slug: MyString
+  isoriginal: 1
+  original_artist: MyString
+  lyrics: MyText
+  metadata: MyText
+  nickname: MyText
+
+two:
+  name: MyString
+  slug: MyString
+  isoriginal: 1
+  original_artist: MyString
+  lyrics: MyText
+  metadata: MyText
+  nickname: MyText
