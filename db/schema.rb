@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_09_15_005019) do
+ActiveRecord::Schema[7.2].define(version: 2024_09_15_005442) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -75,7 +75,54 @@ ActiveRecord::Schema[7.2].define(version: 2024_09_15_005019) do
     t.index ["settype"], name: "index_set_types_on_settype", unique: true
   end
 
+  create_table "shows", force: :cascade do |t|
+    t.integer "venue_id", null: false
+    t.integer "artist_id", null: false
+    t.date "showdate", null: false
+    t.string "showtitle", limit: 255
+    t.text "meta", null: false
+    t.text "shownotes", null: false
+    t.integer "showyear"
+    t.integer "showorder", null: false
+    t.string "settype", limit: 50, default: "Set", null: false
+    t.string "opener", limit: 100, null: false
+    t.integer "tour_id", default: 1
+    t.integer "lastuser", default: 0, null: false
+    t.text "soundcheck", null: false
+    t.string "permalink", limit: 255, null: false
+    t.integer "isverified", default: 0, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["artist_id"], name: "index_shows_on_artist_id"
+    t.index ["tour_id"], name: "index_shows_on_tour_id"
+    t.index ["venue_id"], name: "index_shows_on_venue_id"
+  end
+
+  create_table "tours", force: :cascade do |t|
+    t.string "tourname", limit: 50, null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["tourname"], name: "index_tours_on_tourname", unique: true
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string "venuename", null: false
+    t.string "streetaddress"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip"
+    t.string "url"
+    t.integer "capacity"
+    t.integer "aliasof", default: 0, null: false
+    t.string "slug"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+  end
+
   add_foreign_key "albums", "artists"
   add_foreign_key "bandmembers", "artists"
   add_foreign_key "bandmembers", "people", column: "people_id"
+  add_foreign_key "shows", "artists"
+  add_foreign_key "shows", "tours", on_delete: :nullify
 end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :venues
+  resources :tours
+  resources :shows
   resources :set_types
   resources :footnote_symbols
   resources :people

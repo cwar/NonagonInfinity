@@ -1,0 +1,92 @@
+<%= form_with(model: show) do |form| %>
+  <% if show.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(show.errors.count, "error") %> prohibited this show from being saved:</h2>
+
+      <ul>
+        <% show.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :venue_id, style: "display: block" %>
+    <%= form.number_field :venue_id %>
+  </div>
+
+  <div>
+    <%= form.label :artist_id, style: "display: block" %>
+    <%= form.number_field :artist_id %>
+  </div>
+
+  <div>
+    <%= form.label :showdate, style: "display: block" %>
+    <%= form.date_field :showdate %>
+  </div>
+
+  <div>
+    <%= form.label :showtitle, style: "display: block" %>
+    <%= form.text_field :showtitle %>
+  </div>
+
+  <div>
+    <%= form.label :meta, style: "display: block" %>
+    <%= form.text_area :meta %>
+  </div>
+
+  <div>
+    <%= form.label :shownotes, style: "display: block" %>
+    <%= form.text_area :shownotes %>
+  </div>
+
+  <div>
+    <%= form.label :showyear, style: "display: block" %>
+    <%= form.number_field :showyear %>
+  </div>
+
+  <div>
+    <%= form.label :showorder, style: "display: block" %>
+    <%= form.number_field :showorder %>
+  </div>
+
+  <div>
+    <%= form.label :settype, style: "display: block" %>
+    <%= form.text_field :settype %>
+  </div>
+
+  <div>
+    <%= form.label :opener, style: "display: block" %>
+    <%= form.text_field :opener %>
+  </div>
+
+  <div>
+    <%= form.label :tour_id, style: "display: block" %>
+    <%= form.number_field :tour_id %>
+  </div>
+
+  <div>
+    <%= form.label :lastuser, style: "display: block" %>
+    <%= form.number_field :lastuser %>
+  </div>
+
+  <div>
+    <%= form.label :soundcheck, style: "display: block" %>
+    <%= form.text_area :soundcheck %>
+  </div>
+
+  <div>
+    <%= form.label :permalink, style: "display: block" %>
+    <%= form.text_field :permalink %>
+  </div>
+
+  <div>
+    <%= form.label :isverified, style: "display: block" %>
+    <%= form.number_field :isverified %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

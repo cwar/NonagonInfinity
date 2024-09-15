@@ -1,0 +1,35 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  venue_id: 1
+  artist_id: 1
+  showdate: 2024-09-15
+  showtitle: MyString
+  meta: MyText
+  shownotes: MyText
+  showyear: 1
+  showorder: 1
+  settype: MyString
+  opener: MyString
+  tour_id: 1
+  lastuser: 1
+  soundcheck: MyText
+  permalink: MyString
+  isverified: 1
+
+two:
+  venue_id: 1
+  artist_id: 1
+  showdate: 2024-09-15
+  showtitle: MyString
+  meta: MyText
+  shownotes: MyText
+  showyear: 1
+  showorder: 1
+  settype: MyString
+  opener: MyString
+  tour_id: 1
+  lastuser: 1
+  soundcheck: MyText
+  permalink: MyString
+  isverified: 1
