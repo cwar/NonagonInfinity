@@ -1,2 +1,3 @@
-web: bin/rails server
+web: bin/rails server -b cwarprime1.taild0ac70.ts.net -p 3132
 css: bin/rails tailwindcss:watch
+css: yarn build:css --watch
