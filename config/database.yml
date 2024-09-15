@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: nonagon_infinity_development
+
+test:
+  <<: *default
+  database: nonagon_infinity_test
+
+production:
+  <<: *default
+  database: nonagon_infinity_production
+  username: nonagon_infinity
+  password: <%= ENV['NONAGON_INFINITY_DATABASE_PASSWORD'] %>
