@@ -1,5 +1,6 @@
 class Album < ApplicationRecord
   belongs_to :artist
+  validates :artist_id, presence: true
 
   before_save :generate_slug
 

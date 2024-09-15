@@ -1,67 +1,14 @@
-<%= form_with(model: album) do |form| %>
-  <% if album.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+<!-- app/views/albums/_form.html.erb -->
 
-      <ul>
-        <% album.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: album, local: true) do |form| %>
+  <!-- Other album fields -->
 
-  <div>
-    <%= form.label :artist_id, style: "display: block" %>
-    <%= form.text_field :artist_id %>
+  <div class="field">
+    <%= form.label :artist_id, "Artist" %>
+    <%= form.collection_select :artist_id, Artist.all, :id, :name, prompt: "Select an artist" %>
   </div>
 
-  <div>
-    <%= form.label :albumtitle, style: "display: block" %>
-    <%= form.text_field :albumtitle %>
-  </div>
-
-  <div>
-    <%= form.label :displayname, style: "display: block" %>
-    <%= form.text_field :displayname %>
-  </div>
-
-  <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
-  </div>
-
-  <div>
-    <%= form.label :releasedate, style: "display: block" %>
-    <%= form.text_field :releasedate %>
-  </div>
-
-  <div>
-    <%= form.label :cover, style: "display: block" %>
-    <%= form.text_field :cover %>
-  </div>
-
-  <div>
-    <%= form.label :album_notes, style: "display: block" %>
-    <%= form.text_area :album_notes %>
-  </div>
-
-  <div>
-    <%= form.label :is_statsable, style: "display: block" %>
-    <%= form.check_box :is_statsable %>
-  </div>
-
-  <div>
-    <%= form.label :lastmod, style: "display: block" %>
-    <%= form.number_field :lastmod %>
-  </div>
-
-  <div>
-    <%= form.label :lastuser, style: "display: block" %>
-    <%= form.number_field :lastuser %>
-  </div>
-
-  <div>
+  <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
