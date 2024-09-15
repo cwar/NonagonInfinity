@@ -6,6 +6,6 @@ class Artist < ApplicationRecord
     private
   
     def generate_slug
-      self.slug = artist.parameterize if slug.blank?
+      self.slug = name.parameterize if slug.blank?
     end
   end  

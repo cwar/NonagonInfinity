@@ -22,7 +22,10 @@ class AlbumsController < ApplicationController
   # POST /albums or /albums.json
   def create
     @album = Album.new(album_params)
-
+    
+    # Debugging
+    puts "Album Params: #{album_params.inspect}"
+  
     respond_to do |format|
       if @album.save
         format.html { redirect_to album_url(@album), notice: "Album was successfully created." }
@@ -63,8 +66,7 @@ class AlbumsController < ApplicationController
       @album = Album.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def album_params
-      params.require(:album).permit(:artist_id, :albumtitle, :displayname, :slug, :releasedate, :cover, :album_notes, :is_statsable, :lastmod, :lastuser)
-    end
+      params.require(:album).permit(:title, :artist_id, :slug, :cover, :release_date, :genre, :description)
+    end  
 end

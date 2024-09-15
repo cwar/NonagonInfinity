@@ -1,14 +1,67 @@
-<!-- app/views/albums/_form.html.erb -->
-
-<%= form_with(model: album, local: true) do |form| %>
-  <!-- Other album fields -->
-
-  <div class="field">
-    <%= form.label :artist_id, "Artist" %>
-    <%= form.collection_select :artist_id, Artist.all, :id, :name, prompt: "Select an artist" %>
+<%= form_with(model: @album, class: "space-y-6") do |form| %>
+  <!-- Album Title -->
+  <div class="mb-4">
+    <%= form.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :title, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <!-- Album Slug -->
+  <div class="mb-4">
+    <%= form.label :slug, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_field :slug, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+  </div>
+
+  <!-- Artist Select -->
+  <div class="mb-4">
+    <%= form.label :artist_id, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.collection_select(:artist_id, Artist.all, :id, :name, { prompt: "Select Artist" }, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm") %>
+  </div>
+
+    <!-- Cover Image -->
+  <div class="mb-4">
+    <%= form.label :cover, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.file_field :cover, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+  </div>
+
+  <!-- Release Date -->
+  <div class="mb-4">
+    <%= form.label :release_date, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.date_select :release_date, { start_year: Date.today.year - 50, end_year: Date.today.year }, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+  </div>
+
+  <!-- Description -->
+  <div class="mb-4">
+    <%= form.label :description, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :description, rows: 5, class: "mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" %>
+  </div>
+
+  <!-- Submit Button -->
+  <div class="mt-6">
+    <%= form.submit "Create Album", class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script loaded');
+    const titleField = document.getElementById('album_title');
+    const slugField = document.getElementById('album_slug');
+
+    function generateSlug(title) {
+      return title
+        .toLowerCase()
+        .replace(/ /g, '-')   // Replace spaces with hyphens
+        .replace(/[^\w\-]+/g, '')   // Remove non-word characters
+        .replace(/\-\-+/g, '-')   // Replace multiple hyphens with a single hyphen
+        .replace(/^-+/, '')   // Remove leading hyphens
+        .replace(/-+$/, '');   // Remove trailing hyphens
+    }
+
+    if (titleField && slugField) {
+      titleField.addEventListener('input', () => {
+        slugField.value = generateSlug(titleField.value);
+      });
+    }
+  });
+</script>
+

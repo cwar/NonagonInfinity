@@ -17,7 +17,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create album" do
     assert_difference("Album.count") do
-      post albums_url, params: { album: { album_notes: @album.album_notes, albumtitle: @album.albumtitle, artist_id: @album.artist_id, cover: @album.cover, displayname: @album.displayname, is_statsable: @album.is_statsable, lastmod: @album.lastmod, lastuser: @album.lastuser, releasedate: @album.releasedate, slug: @album.slug } }
+      post albums_url, params: { album: { album_notes: @album.album_notes, title: @album.title, artist_id: @album.artist_id, cover: @album.cover, lastmod: @album.lastmod, lastuser: @album.lastuser, release_date: @album.release_date, slug: @album.slug } }
     end
 
     assert_redirected_to album_url(Album.last)
@@ -34,7 +34,7 @@ class AlbumsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update album" do
-    patch album_url(@album), params: { album: { album_notes: @album.album_notes, albumtitle: @album.albumtitle, artist_id: @album.artist_id, cover: @album.cover, displayname: @album.displayname, is_statsable: @album.is_statsable, lastmod: @album.lastmod, lastuser: @album.lastuser, releasedate: @album.releasedate, slug: @album.slug } }
+    patch album_url(@album), params: { album: { album_notes: @album.album_notes, title: @album.title, artist_id: @album.artist_id, cover: @album.cover, lastmod: @album.lastmod, lastuser: @album.lastuser, release_date: @album.release_date, slug: @album.slug } }
     assert_redirected_to album_url(@album)
   end
 

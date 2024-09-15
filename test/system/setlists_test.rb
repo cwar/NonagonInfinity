@@ -14,7 +14,6 @@ class SetlistsTest < ApplicationSystemTestCase
     visit setlists_url
     click_on "New setlist"
 
-    fill_in "Displayname", with: @setlist.displayname
     fill_in "Footnote", with: @setlist.footnote
     fill_in "Isjam", with: @setlist.isjam
     fill_in "Isjamchart", with: @setlist.isjamchart
@@ -37,7 +36,6 @@ class SetlistsTest < ApplicationSystemTestCase
     visit setlist_url(@setlist)
     click_on "Edit this setlist", match: :first
 
-    fill_in "Displayname", with: @setlist.displayname
     fill_in "Footnote", with: @setlist.footnote
     fill_in "Isjam", with: @setlist.isjam
     fill_in "Isjamchart", with: @setlist.isjamchart

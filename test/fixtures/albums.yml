@@ -2,24 +2,20 @@
 
 one:
   artist: one
-  albumtitle: MyString
-  displayname: MyString
+  title: MyString
   slug: MyString
-  releasedate: MyString
+  release_date: MyString
   cover: MyString
   album_notes: MyText
-  is_statsable: false
   lastmod: 1
   lastuser: 1
 
 two:
   artist: two
-  albumtitle: MyString
-  displayname: MyString
+  title: MyString
   slug: MyString
-  releasedate: MyString
+  release_date: MyString
   cover: MyString
   album_notes: MyText
-  is_statsable: false
   lastmod: 1
   lastuser: 1

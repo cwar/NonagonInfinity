@@ -15,14 +15,12 @@ class AlbumsTest < ApplicationSystemTestCase
     click_on "New album"
 
     fill_in "Album notes", with: @album.album_notes
-    fill_in "Albumtitle", with: @album.albumtitle
+    fill_in "Title", with: @album.title
     fill_in "Artist", with: @album.artist_id
     fill_in "Cover", with: @album.cover
-    fill_in "Displayname", with: @album.displayname
-    check "Is statsable" if @album.is_statsable
     fill_in "Lastmod", with: @album.lastmod
     fill_in "Lastuser", with: @album.lastuser
-    fill_in "Releasedate", with: @album.releasedate
+    fill_in "Release date", with: @album.release_date
     fill_in "Slug", with: @album.slug
     click_on "Create Album"
 
@@ -35,14 +33,12 @@ class AlbumsTest < ApplicationSystemTestCase
     click_on "Edit this album", match: :first
 
     fill_in "Album notes", with: @album.album_notes
-    fill_in "Albumtitle", with: @album.albumtitle
+    fill_in "Title", with: @album.title
     fill_in "Artist", with: @album.artist_id
     fill_in "Cover", with: @album.cover
-    fill_in "Displayname", with: @album.displayname
-    check "Is statsable" if @album.is_statsable
     fill_in "Lastmod", with: @album.lastmod
     fill_in "Lastuser", with: @album.lastuser
-    fill_in "Releasedate", with: @album.releasedate
+    fill_in "Release date", with: @album.release_date
     fill_in "Slug", with: @album.slug
     click_on "Update Album"
 
