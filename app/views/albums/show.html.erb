@@ -1,10 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/albums/show.html.erb -->
 
-<%= render @album %>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6"><%= @album.title %></h1>
 
-<div>
-  <%= link_to "Edit this album", edit_album_path(@album) %> |
-  <%= link_to "Back to albums", albums_path %>
+  <!-- Cover Image -->
+  <div class="mb-4">
+    <% if @album.cover.attached? %>
+      <%= image_tag @album.cover, alt: @album.title, class: "w-full max-w-md object-cover" %>
+    <% else %>
+      <span class="text-gray-500">No cover</span>
+    <% end %>
+  </div>
 
-  <%= button_to "Destroy this album", @album, method: :delete %>
+  <!-- Album Details -->
+  <div class="mb-4">
+    <p><strong>Slug:</strong> <%= @album.slug %></p>
+    <p><strong>Artist:</strong> <%= @album.artist.name %></p>
+    <p><strong>Release Date:</strong> <%= @album.release_date.strftime('%B %d, %Y') %></p>
+    <p><strong>Description:</strong></p>
+    <p><%= @album.description %></p>
+  </div>
+
+  <!-- Actions -->
+  <div>
+    <%= link_to 'Edit', edit_album_path(@album), class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+    <%= link_to 'Back to List', albums_path, class: "px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 ml-4" %>
+  </div>
 </div>

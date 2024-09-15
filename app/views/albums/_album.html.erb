@@ -1,4 +1,4 @@
-<%# app/views/albums/index.html.erb %>
+<!-- app/views/albums/index.html.erb -->
 
 <div class="container mx-auto p-4">
   <h1 class="text-3xl font-bold mb-6">Albums</h1>
@@ -21,7 +21,6 @@
       </tr>
     </thead>
     <tbody class="bg-white divide-y divide-gray-200">
-      <% @albums.each do |album| %>
         <tr>
           <!-- Cover Image Column -->
           <td class="px-6 py-4 whitespace-nowrap">
@@ -31,8 +30,10 @@
               <span class="text-gray-500">No cover</span>
             <% end %>
           </td>
-          <!-- Other Columns -->
-          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= album.title %></td>
+          <!-- Title Column -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+            <%= link_to album.title, album_path(album) %>
+          </td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.slug %></td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.artist.name %></td>
           <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.release_date.strftime('%B %d, %Y') %></td>
@@ -42,7 +43,6 @@
             <%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-red-600 hover:text-red-900 ml-4" %>
           </td>
         </tr>
-      <% end %>
     </tbody>
   </table>
 </div>
