@@ -2,6 +2,7 @@ class Artist < ApplicationRecord
     before_save :generate_slug
     
     has_many :albums
+    has_many :songs
   
     private
   

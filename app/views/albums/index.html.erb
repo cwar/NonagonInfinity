@@ -1,16 +1,48 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/albums/index.html.erb -->
 
-<% content_for :title, "Albums" %>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6">Albums</h1>
 
-<h1>Albums</h1>
+  <!-- Add a button to create a new album (This should be outside the table loop) -->
+  <div class="mb-4">
+    <%= link_to 'New Album', new_album_path, class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+  </div>
 
-<div id="albums">
-  <% @albums.each do |album| %>
-    <%= render album %>
-    <p>
-      <%= link_to "Show this album", album %>
-    </p>
-  <% end %>
+  <!-- Albums Table -->
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cover</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Artist</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Release Date</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @albums.each do |album| %>
+        <tr>
+          <!-- Cover Image Column -->
+          <td class="px-6 py-4 whitespace-nowrap">
+            <% if album.cover.attached? %>
+              <%= image_tag album.cover.variant(resize_to_limit: [100, 100]), alt: album.title, class: "w-24 h-24 object-cover" %>
+            <% else %>
+              <span class="text-gray-500">No cover</span>
+            <% end %>
+          </td>
+          <!-- Other Columns -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= album.title %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.slug %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.artist.name %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= album.release_date.strftime('%B %d, %Y') %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <%= link_to 'Show', album_path(album), class: "text-indigo-600 hover:text-indigo-900" %>
+            <%= link_to 'Edit', edit_album_path(album), class: "text-indigo-600 hover:text-indigo-900 ml-4" %>
+            <%= link_to 'Destroy', album_path(album), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-red-600 hover:text-red-900 ml-4" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<%= link_to "New album", new_album_path %>

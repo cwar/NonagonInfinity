@@ -1,52 +1,90 @@
-<%= form_with(model: song) do |form| %>
-  <% if song.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(song.errors.count, "error") %> prohibited this song from being saved:</h2>
+<!-- app/views/songs/_form.html.erb -->
 
-      <ul>
-        <% song.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="container mx-auto p-4">
+  <%= form_with(model: song, local: true) do |form| %> <!-- Use 'song' instead of '@song' -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Song Name Field -->
+      <div>
+        <%= form.label :name, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :name, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        <% if song.errors[:name].any? %> <!-- Use 'song' instead of '@song' -->
+          <span class="text-red-600 text-sm"><%= song.errors[:name].first %></span>
         <% end %>
-      </ul>
+      </div>
+
+      <!-- Slug Field -->
+      <div>
+        <%= form.label :slug, class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_field :slug, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        <% if song.errors[:slug].any? %>
+          <span class="text-red-600 text-sm"><%= song.errors[:slug].first %></span>
+        <% end %>
+      </div>
+
+      <!-- Artist Dropdown -->
+      <div>
+        <%= form.label :artist_id, "Artist", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.collection_select :artist_id, Artist.all, :id, :name, prompt: "Select Artist", class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        <% if song.errors[:artist_id].any? %>
+          <span class="text-red-600 text-sm"><%= song.errors[:artist_id].first %></span>
+        <% end %>
+      </div>
+
+      <!-- Album Dropdown -->
+      <div>
+        <%= form.label :album_id, "Album (Optional)", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.collection_select :album_id, Album.all, :id, :title, prompt: "Select Album", class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" %>
+        <% if song.errors[:album_id].any? %>
+          <span class="text-red-600 text-sm"><%= song.errors[:album_id].first %></span>
+        <% end %>
+      </div>
+
+      <!-- Is Original Checkbox Field -->
+      <div>
+        <%= form.label :is_original, "Is Original?", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.check_box :is_original, { checked: song.is_original.nil? ? true : song.is_original }, class: "mt-1 block" %>
+      </div>
+
+      <!-- Lyrics Field -->
+      <div class="md:col-span-2">
+        <%= form.label :lyrics, "Lyrics", class: "block text-sm font-medium text-gray-700" %>
+        <%= form.text_area :lyrics, class: "mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md", rows: 10 %>
+        <% if song.errors[:lyrics].any? %>
+          <span class="text-red-600 text-sm"><%= song.errors[:lyrics].first %></span>
+        <% end %>
+      </div>
+      
+    </div>
+
+    <!-- Submit Button -->
+    <div class="mt-6">
+      <%= form.submit song.new_record? ? "Create Song" : "Update Song", class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+      <%= link_to 'Back', songs_path, class: "ml-4 text-indigo-600 hover:text-indigo-900" %>
     </div>
   <% end %>
+</div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('Script loaded');
+    const nameField = document.getElementById('song_name');
+    const slugField = document.getElementById('song_slug');
 
-  <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
-  </div>
+    function generateSlug(name) {
+      return name
+        .toLowerCase()
+        .replace(/ /g, '-')   // Replace spaces with hyphens
+        .replace(/[^\w\-]+/g, '')   // Remove non-word characters
+        .replace(/\-\-+/g, '-')   // Replace multiple hyphens with a single hyphen
+        .replace(/^-+/, '')   // Remove leading hyphens
+        .replace(/-+$/, '');   // Remove trailing hyphens
+    }
 
-  <div>
-    <%= form.label :isoriginal, style: "display: block" %>
-    <%= form.number_field :isoriginal %>
-  </div>
-
-  <div>
-    <%= form.label :original_artist, style: "display: block" %>
-    <%= form.text_field :original_artist %>
-  </div>
-
-  <div>
-    <%= form.label :lyrics, style: "display: block" %>
-    <%= form.text_area :lyrics %>
-  </div>
-
-  <div>
-    <%= form.label :metadata, style: "display: block" %>
-    <%= form.text_area :metadata %>
-  </div>
-
-  <div>
-    <%= form.label :nickname, style: "display: block" %>
-    <%= form.text_area :nickname %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+    if (nameField && slugField) {
+      nameField.addEventListener('input', () => {
+        slugField.value = generateSlug(nameField.value);
+      });
+    }
+  });
+</script>

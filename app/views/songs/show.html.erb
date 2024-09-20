@@ -1,10 +1,33 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/songs/show.html.erb -->
 
-<%= render @song %>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6"><%= @song.name %></h1>
 
-<div>
-  <%= link_to "Edit this song", edit_song_path(@song) %> |
-  <%= link_to "Back to songs", songs_path %>
+  <div class="bg-white shadow-md rounded-lg p-6">
+    <!-- Song Details -->
+    <div class="mb-4">
+      <h2 class="text-xl font-semibold mb-2">Details</h2>
+      <p><strong>Title:</strong> <%= @song.name %></p>
+      <p><strong>Slug:</strong> <%= @song.slug %></p>
+      <p><strong>Artist:</strong> <%= @song.artist.name if @song.artist %></p>
+      <p><strong>Album:</strong> <%= @song.album.title if @song.album %></p>
+      <p><strong>Is Original:</strong> <%= @song.is_original ? "Yes" : "No" %></p>
+    </div>
 
-  <%= button_to "Destroy this song", @song, method: :delete %>
+    <!-- Lyrics -->
+    <% if @song.lyrics.present? %>
+      <div class="mb-4">
+        <h2 class="text-xl font-semibold mb-2">Lyrics</h2>
+        <div class="bg-gray-100 p-4 rounded-lg">
+          <%= raw @song.lyrics %>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Actions -->
+    <div class="mt-6">
+      <%= link_to 'Edit', edit_song_path(@song), class: "px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700" %>
+      <%= link_to 'Back', songs_path, class: "ml-4 px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300" %>
+    </div>
+  </div>
 </div>

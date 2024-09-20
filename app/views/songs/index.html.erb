@@ -1,36 +1,39 @@
-<header class="bg-gray-800 text-white p-4">
-  <div class="container mx-auto">
-    <h1 class="text-3xl font-bold">Songs</h1>
-  </div>
-</header>
+<!-- app/views/songs/index.html.erb -->
 
-<div class="container mx-auto p-custom-padding">
-  <%= form_with url: songs_path, method: :get, local: true, class: "mb-4" do |form| %>
-    <%= form.text_field :query, placeholder: "Search for songs", class: "p-2 border border-gray-300 rounded-lg w-full" %>
-    <%= form.submit "Search", class: "bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
-  <% end %>
+<div class="container mx-auto p-4">
+  <h1 class="text-3xl font-bold mb-6">Songs</h1>
 
-  <div id="songs">
-    <% @songs.each do |song| %>
-      <div class="bg-white shadow-md rounded-lg p-4 mb-4">
-        <div class="text-xl font-semibold mb-2">
-          <%= link_to song.name, song %>
-        </div>
-        <div class="text-gray-700">
-          <%= render song %>
-          <p>
-            <%= link_to "Show this song", song, class: "bg-secondary text-white px-4 py-2 rounded-lg hover:bg-orange-700" %>
-          </p>
-        </div>
-      </div>
-    <% end %>
+  <!-- Add a button to create a new song -->
+  <div class="mb-4">
+    <%= link_to 'New Song', new_song_path, class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
   </div>
 
-  <%= link_to "New song", new_song_path, class: "bg-primary text-white px-4 py-2 rounded-lg hover:bg-blue-700" %>
+  <!-- Songs Table -->
+  <table class="min-w-full divide-y divide-gray-200">
+    <thead class="bg-gray-50">
+      <tr>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Slug</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Artist</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Album</th>
+        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="bg-white divide-y divide-gray-200">
+      <% @songs.each do |song| %>
+        <tr>
+          <!-- Other Columns -->
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= song.name %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= song.slug %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= song.artist.name %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"><%= song.album.title if song.album %></td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <%= link_to 'Show', song_path(song), class: "text-indigo-600 hover:text-indigo-900" %>
+            <%= link_to 'Edit', edit_song_path(song), class: "text-indigo-600 hover:text-indigo-900 ml-4" %>
+            <%= link_to 'Destroy', song_path(song), method: :delete, data: { confirm: 'Are you sure?' }, class: "text-red-600 hover:text-red-900 ml-4" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-
-<footer class="bg-gray-800 text-white p-4 mt-8 text-center">
-  <div class="container mx-auto">
-    &copy; <%= Time.now.year %> kglw.net
-  </div>
-</footer>

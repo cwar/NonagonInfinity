@@ -2,6 +2,7 @@ class Album < ApplicationRecord
   belongs_to :artist
   has_one_attached :cover
   validates :artist_id, :title, :release_date, presence: true
+  has_many :songs
 
   before_save :generate_slug, :set_lastmod
 
