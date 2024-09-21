@@ -17,7 +17,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create song" do
     assert_difference("Song.count") do
-      post songs_url, params: { song: { isoriginal: @song.isoriginal, lyrics: @song.lyrics, metadata: @song.metadata, name: @song.name, nickname: @song.nickname, original_artist: @song.original_artist, slug: @song.slug } }
+      post songs_url, params: { song: { is_original: @song.is_original, lyrics: @song.lyrics, metadata: @song.metadata, name: @song.name, nickname: @song.nickname, original_artist: @song.original_artist, slug: @song.slug } }
     end
 
     assert_redirected_to song_url(Song.last)
@@ -34,7 +34,7 @@ class SongsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update song" do
-    patch song_url(@song), params: { song: { isoriginal: @song.isoriginal, lyrics: @song.lyrics, metadata: @song.metadata, name: @song.name, nickname: @song.nickname, original_artist: @song.original_artist, slug: @song.slug } }
+    patch song_url(@song), params: { song: { is_original: @song.is_original, lyrics: @song.lyrics, metadata: @song.metadata, name: @song.name, nickname: @song.nickname, original_artist: @song.original_artist, slug: @song.slug } }
     assert_redirected_to song_url(@song)
   end
 

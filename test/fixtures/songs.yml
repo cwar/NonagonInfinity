@@ -3,7 +3,7 @@
 one:
   name: MyString
   slug: MyString
-  isoriginal: 1
+  is_original: 1
   original_artist: MyString
   lyrics: MyText
   metadata: MyText
@@ -12,7 +12,7 @@ one:
 two:
   name: MyString
   slug: MyString
-  isoriginal: 1
+  is_original: 1
   original_artist: MyString
   lyrics: MyText
   metadata: MyText

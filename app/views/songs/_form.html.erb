@@ -43,7 +43,7 @@
       <!-- Is Original Checkbox Field -->
       <div>
         <%= form.label :is_original, "Is Original?", class: "block text-sm font-medium text-gray-700" %>
-        <%= form.check_box :is_original, { checked: song.is_original.nil? ? true : song.is_original }, class: "mt-1 block" %>
+        <%= form.check_box :is_original, class: "mt-1 block", include_hidden: true %>
       </div>
 
       <!-- Lyrics Field -->

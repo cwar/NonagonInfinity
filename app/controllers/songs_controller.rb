@@ -42,6 +42,8 @@ class SongsController < ApplicationController
   private
 
   def song_params
+    Rails.logger.debug params.inspect
+
     params.require(:song).permit(:name, :lyrics, :is_original, :slug, :artist_id, :album_id, :cover)
   end
 end

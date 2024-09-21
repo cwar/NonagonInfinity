@@ -14,7 +14,7 @@ class SongsTest < ApplicationSystemTestCase
     visit songs_url
     click_on "New song"
 
-    fill_in "Isoriginal", with: @song.isoriginal
+    fill_in "is_original", with: @song.is_original
     fill_in "Lyrics", with: @song.lyrics
     fill_in "Metadata", with: @song.metadata
     fill_in "Name", with: @song.name
@@ -31,7 +31,7 @@ class SongsTest < ApplicationSystemTestCase
     visit song_url(@song)
     click_on "Edit this song", match: :first
 
-    fill_in "Isoriginal", with: @song.isoriginal
+    fill_in "is_original", with: @song.is_original
     fill_in "Lyrics", with: @song.lyrics
     fill_in "Metadata", with: @song.metadata
     fill_in "Name", with: @song.name
